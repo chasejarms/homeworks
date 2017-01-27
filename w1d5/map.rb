@@ -18,7 +18,7 @@ class Map
   end
 
   def assign(key, value)
-    key_index = keys.index
+    key_index = keys.index(key)
     if key_index.nil?
       @ivar << [key, value]
     else
