@@ -15,6 +15,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    if @user
+      redirect_to users_url
+    else
+      flash[:notice] = ["You can't log out until you log in"]
+      redirect_to new_session_url
+    end
   end
 
   def show
@@ -23,6 +31,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    redirect_to new_users_url unless logged_in?
     @users = User.all
   end
 
