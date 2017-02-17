@@ -1,0 +1,16 @@
+<h1>All Users</h1>
+
+<table cellspacing="30">
+  <tr>
+    <th>Email</th>
+    <th>Session Token</th>
+    <th>Password Digest</th>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <th><%= user.email %></th>
+    <th><%= user.session_token %></th>
+    <th><%= user.password_digest %></th>
+  </tr>
+  <% end %>
+</table>

@@ -1,0 +1,6 @@
+<% if flash[:notice] %>
+  <div class="error-message">
+    <h3>Oops, it looks like their was an error. The error message was:</h3>
+    <h3><%= flash[:notice] %></h3>
+  </div>
+<% end %>
