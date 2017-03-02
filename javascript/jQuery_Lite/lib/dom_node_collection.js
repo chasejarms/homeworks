@@ -11,6 +11,24 @@ class DomNodeCollection {
     this.html("");
   }
 
+  append(element) {
+    if (element instanceof DomNodeCollection) {
+      this._domToDom(element);
+    } else if (element instanceof HTMLElement) {
+      this._htmlToDom(element);
+    } else if (typeof element === "string") {
+      this._appendText(element);
+    }
+  }
+
+  addClass(otherClass) {
+    this.arrayOfElements.forEach(el => el.classList.add(otherClass));
+  }
+
+  removeClass(className) {
+    this.arrayOfElements.forEach(el => el.classList.remove(className));
+  }
+
   _setInner(string) {
     this.arrayOfElements.forEach(function(el) {
       el.innerHTML = string;
@@ -20,6 +38,25 @@ class DomNodeCollection {
 
   _getInner() {
     return this.arrayOfElements[0].innerHTML;
+  }
+
+  _domToDom(domNodes) {
+    this.arrayOfElements.forEach(function(el) {
+      domNodes.arrayOfElements.forEach(function(node) {
+        el.appendChild(node);
+      });
+    });
+  }
+
+  _htmlToDom(element) {
+    let domEl = new DomNodeCollection([element]);
+    this._domToDom(domEl);
+  }
+
+  _appendText(element) {
+    this.arrayOfElements.forEach(function(el) {
+      el.innerHTML = el.innerHTML + element;
+    });
   }
 }
 
