@@ -5,7 +5,7 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
-    case ("SWITCH_CURRENCY"):
+    case "SWITCH_CURRENCY":
       return {
         baseCurrency: action.baseCurrency,
         rates: action.rates

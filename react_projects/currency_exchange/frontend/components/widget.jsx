@@ -1,6 +1,7 @@
 import React from 'react';
 import Currency from './currency';
 import selectCurrency from '../actions';
+import ChaseAverage from './chase-average';
 
 class Widget extends React.Component {
 
@@ -58,6 +59,7 @@ class Widget extends React.Component {
       <div>
         <h1>Currency Exchange Rates</h1>
         <h3>Base Currency: {baseCurrency}</h3>
+        <ChaseAverage rates={rates}/>
 
         <div className="currency-selector">
           Get Rates:
